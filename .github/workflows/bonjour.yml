@@ -4,9 +4,6 @@ on:
 jobs:
   dire_bonjour:
     runs-on: ubuntu-22.04
-    container:
-      image: ghcr.io/cicd-lectures/gitpod:latest
-      options: --user=root
     outputs:
       output1: ${{ steps.step1.outputs.firstword }}
     steps:
