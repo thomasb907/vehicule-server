@@ -7,8 +7,20 @@ jobs:
     container:
       image: ghcr.io/cicd-lectures/gitpod:latest
       options: --user=root
+    outputs:
+      output1: ${{ steps.step1.outputs.firstword }}
     steps:
       
       - uses: actions/checkout@v4
+      - id: step1
+        uses: juliangruber/read-file-action@v1
+        with:
+            path: ./Readme.md
+      - id: step2
+        uses : Code-Hex/neo-cowsay-action@v1
+        with:
+         message: "${{ steps.step1.outputs.content }}" 
+          
+      
       - run: ls -l # Liste les fichier du répertoire courant
       - run: cat README.md | cowsay # Affiche le contenu du fichier `README.md` à la base du dépôt
