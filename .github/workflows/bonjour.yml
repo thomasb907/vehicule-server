@@ -8,12 +8,11 @@ jobs:
       output1: ${{ steps.step1.outputs.firstword }}
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20.17
       - run: npm ci
-      - run: rm -r dist/
       - run: npm run build
-      - run : ls l
 
 
